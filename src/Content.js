@@ -1,29 +1,31 @@
 import React from 'react'
 import './style.css'
+import { useState } from 'react';
 
 
 const Content = () => {
+  const [name, setName] = useState('Dave');
+  const [count,setCount] = useState(0)
 
     const handleNameChange = ()=>{
         const name = ['Bob','Vraj','Shefali','Rishabh']
         const i= Math.floor(Math.random() * 4)
-        return name[i]
+        setName(name[i]) 
       }
       const handleClick = ()=>{
-        console.log("You click the button")
+        setCount(count + 1)
+        console.log(count)
       }
-      const handleClick2 = (name)=>{
-        console.log(`${name} was click the button`)
+      const handleClick2 = ()=>{
+        console.log(count)
       }
-      const handleClick3 = (e)=>{
-        console.log(e.target.innerHTML)
-      }
+     
   return (
     <main>
-      <p onDoubleClick={handleClick}>Hello {handleNameChange()}</p>
-      <button onClick={handleClick}>Click Here</button>
-      <button onClick={()=> handleClick2('Vraj')}>Click Here</button>
-      <button onClick={(e)=> handleClick3(e)}>Click Here</button>
+      <p onDoubleClick={handleClick}>Hello {name}</p>
+      <button onClick={handleNameChange}>Change Name</button>
+      <button onClick={handleClick}>Count 1</button>
+      <button onClick={handleClick2}>Count 2</button>
 
     </main>
   )
